@@ -1,0 +1,4 @@
+   G10 T0=20.0 delta=0.50790: BH eps=6.24 (694s)
+   G10 T0=20.0 delta=0.50715: dispersed eps=5.78 (599s)
+   G10 T0=20.0 delta=0.50753: dispersed eps=6.09 (575s)
+RESULT G10 T0=20.0: TH=2.0013 delta_c=0.50771 +- 0.00019 (31.1 min)

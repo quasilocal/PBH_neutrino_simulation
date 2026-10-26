@@ -1,0 +1,9 @@
+   fl_q03_r15 delta=0.44800: dispersed at eps=8.27 (89s)
+   fl_q03_r15 delta=0.45200: BH at eps=5.60 (55s)
+   fl_q03_r15 delta=0.45000: BH at eps=6.22 (62s)
+   fl_q03_r15 delta=0.44900: BH at eps=6.80 (76s)
+   fl_q03_r15 delta=0.44850: BH at eps=7.38 (80s)
+   fl_q03_r15 delta=0.44825: BH at eps=8.02 (79s)
+   fl_q03_r15 delta=0.44812: crash at eps=9.81 (101s)
+   stop: crash
+RESULT fl_q03_r15: delta_c = 0.44812 +- 0.00013  (9.0 min)

@@ -1,0 +1,2 @@
+eps0=0.1: undecided eps=3.00 steps=25826 (43s): anisotropy 1.05e-11, inhomogeneity I 6.75e-12, e 8.27e-12, max|Gam-1| 3.19e-11, drift e/eb-1 -1.36e-06
+eps0=0.02: undecided eps=3.00 steps=26540 (42s): anisotropy 3.03e-10, inhomogeneity I 4.38e-10, e 4.45e-10, max|Gam-1| 9.88e-10, drift e/eb-1 -3.91e-03

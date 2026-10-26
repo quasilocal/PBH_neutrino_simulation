@@ -1,0 +1,12 @@
+M_PBH = 0.2 M_H; Delta at 1e5, 1e6, 1e7 = [0.0886, 0.0926, 0.0958]
+  generalized normal   0.685: factor 8.58 | 0.583: factor 6.95 | 0.556: factor 6.81
+  stretched exp. x=1   0.729: factor 9.82 | 0.621: factor 7.89 | 0.592: factor 7.73
+  power law x=4.5      6.585: factor 1.80 | 5.671: factor 1.68 | 5.441: factor 1.67
+  log-normal           0.415: factor 5.08 | 0.493: factor 4.26 | 0.517: factor 4.19
+M_PBH = 1.0 M_H; Delta at 1e5, 1e6, 1e7 = [0.0573, 0.093, 0.0917]
+  generalized normal   0.685: factor 4.04 | 0.583: factor 7.00 | 0.556: factor 6.28
+  stretched exp. x=1   0.729: factor 4.40 | 0.621: factor 7.96 | 0.592: factor 7.09
+  power law x=4.5      6.585: factor 1.47 | 5.671: factor 1.69 | 5.441: factor 1.64
+  log-normal           0.415: factor 2.89 | 0.493: factor 4.29 | 0.517: factor 3.94
+power law n=4, x=4.5: factors [1.45, 1.46]
+window-edge factors at 1e6 Msun with a 14.7% shift: generalized normal: 21.0; stretched exp. x=1: 25.7; power law x=4.5: 2.2; log-normal: 9.6

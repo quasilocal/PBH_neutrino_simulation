@@ -1,0 +1,8 @@
+   nu K=64 delta=0.55000: BH at eps=3.63 (84s)
+   nu K=64 delta=0.50000: dispersed at eps=4.08 (97s)
+   nu K=64 delta=0.52500: dispersed at eps=5.29 (135s)
+   nu K=64 delta=0.53750: BH at eps=4.32 (102s)
+   nu K=64 delta=0.53125: BH at eps=5.15 (119s)
+   nu K=64 delta=0.52812: dispersed at eps=6.36 (148s)
+   nu K=64 delta=0.52969: BH at eps=5.66 (135s)
+   nu K=64 delta=0.52891: BH at eps=6.23 (147s)

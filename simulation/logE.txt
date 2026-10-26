@@ -1,0 +1,8 @@
+   fs T0=5.0 delta=0.53000: BH eps=5.26 TH=0.5062191730712903 (137s)
+   fs T0=5.0 delta=0.51500: dispersed eps=4.44 TH=0.5061913626680472 (97s)
+   fs T0=5.0 delta=0.52250: dispersed eps=4.85 TH=0.5062052920710123 (112s)
+   fs T0=5.0 delta=0.52625: dispersed eps=5.26 TH=0.5062122385313875 (123s)
+   fs T0=5.0 delta=0.52812: dispersed eps=5.80 TH=0.5062157072941966 (137s)
+   fs T0=5.0 delta=0.52906: BH eps=5.90 TH=0.5062174405586791 (91s)
+   fs T0=5.0 delta=0.52859: dispersed eps=6.26 TH=0.5062165740200167 (77s)
+RESULT fs T0=5.0: TH=0.5062 MeV delta_c=0.52883 +- 0.00023

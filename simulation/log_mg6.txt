@@ -1,0 +1,6 @@
+   nonunu6 T0=10.0 delta=0.52650: BH eps=6.15 (633s)
+   nonunu6 T0=10.0 delta=0.52475: dispersed eps=5.50 (546s)
+   nonunu6 T0=10.0 delta=0.52563: dispersed eps=5.84 (555s)
+   nonunu6 T0=10.0 delta=0.52606: dispersed eps=6.23 (620s)
+   nonunu6 T0=10.0 delta=0.52628: dispersed eps=6.99 (723s)
+RESULT nonunu6 T0=10.0: TH=1.0030 delta_c=0.52639 +- 0.00011 (51.3 min)

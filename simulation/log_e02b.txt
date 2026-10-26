@@ -1,0 +1,6 @@
+   nu409_e02b delta=0.52925: dispersed at eps=6.52 (47s)
+   nu409_e02b delta=0.53038: BH at eps=5.85 (51s)
+   nu409_e02b delta=0.52981: BH at eps=6.38 (47s)
+   nu409_e02b delta=0.52953: crash at eps=7.46 (54s)
+   stop: crash
+RESULT nu409_e02b: delta_c = 0.52953 +- 0.00028  (3.3 min)

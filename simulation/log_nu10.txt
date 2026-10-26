@@ -1,0 +1,7 @@
+   nu10_K32 delta=0.50500: dispersed at eps=6.09 (52s)
+   nu10_K32 delta=0.51000: BH at eps=4.71 (38s)
+   nu10_K32 delta=0.50750: BH at eps=5.18 (42s)
+   nu10_K32 delta=0.50625: BH at eps=5.66 (43s)
+   nu10_K32 delta=0.50562: BH at eps=6.28 (49s)
+   nu10_K32 delta=0.50531: dispersed at eps=6.54 (49s)
+RESULT nu10_K32: delta_c = 0.50547 +- 0.00016  (4.6 min)

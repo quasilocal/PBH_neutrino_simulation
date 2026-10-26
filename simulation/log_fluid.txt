@@ -1,0 +1,8 @@
+   fluid delta=0.50000: BH at eps=5.08 (1s)
+   fluid delta=0.49500: dispersed at eps=5.29 (1s)
+   fluid delta=0.49750: dispersed at eps=6.32 (1s)
+   fluid delta=0.49875: BH at eps=5.49 (1s)
+   fluid delta=0.49813: BH at eps=5.90 (1s)
+   fluid delta=0.49781: BH at eps=6.39 (1s)
+   fluid delta=0.49766: dispersed at eps=6.80 (1s)
+RESULT fluid: delta_c = 0.49773 +- 0.00008

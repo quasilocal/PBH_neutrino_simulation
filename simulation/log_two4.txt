@@ -1,0 +1,7 @@
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.51000: BH eps=6.87 (69s)
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.50600: dispersed eps=5.11 (48s)
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.50800: dispersed eps=5.42 (49s)
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.50900: dispersed eps=5.71 (53s)
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.50950: dispersed eps=5.97 (58s)
+   Te=1.5 Tmt=2.5 T0=40.0 delta=0.50975: dispersed eps=6.22 (59s)
+RESULT Te=1.5 Tmt=2.5 T0=40.0: TH=4.0003 delta_c=0.50988 +- 0.00012 (5.6 min)

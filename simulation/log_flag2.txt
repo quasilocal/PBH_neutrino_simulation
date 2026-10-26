@@ -1,0 +1,8 @@
+   pf_flag delta=0.50000: BH at eps=5.08 (30s)
+   pf_flag delta=0.49500: dispersed at eps=5.30 (31s)
+   pf_flag delta=0.49750: dispersed at eps=6.35 (40s)
+   pf_flag delta=0.49875: BH at eps=5.48 (34s)
+   pf_flag delta=0.49813: BH at eps=5.88 (34s)
+   pf_flag delta=0.49781: BH at eps=6.34 (37s)
+   pf_flag delta=0.49766: dispersed at eps=6.95 (40s)
+RESULT pf_flag: delta_c = 0.49773 +- 0.00008  (4.1 min)

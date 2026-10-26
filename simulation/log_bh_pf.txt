@@ -1,0 +1,5 @@
+  fnu=0.0 x=1.0e-01: BH eps=2.35 M_AH/M_H=0.6793 r_AH=0.8099 fallback=False (17s)
+  fnu=0.0 x=3.0e-02: BH eps=3.37 M_AH/M_H=0.5014 r_AH=0.7214 fallback=False (20s)
+  fnu=0.0 x=1.0e-02: BH eps=4.17 M_AH/M_H=0.3911 r_AH=0.6535 fallback=False (25s)
+  fnu=0.0 x=3.0e-03: BH eps=4.92 M_AH/M_H=0.2912 r_AH=0.5720 fallback=False (29s)
+  fnu=0.0 x=1.0e-03: BH eps=5.49 M_AH/M_H=0.2153 r_AH=0.5013 fallback=False (35s)

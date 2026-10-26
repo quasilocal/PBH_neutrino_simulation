@@ -1,0 +1,14 @@
+K=32 dm=0.005 done (44s), r_cell=0.400
+K=32 dm=0.0025 done (36s), r_cell=0.400
+K=64 dm=0.005 done (107s), r_cell=0.400
+K=64 dm=0.0025 done (124s), r_cell=0.400
+K=32: zero-amplitude sim/lin at tau=1,2,3,4 (plasma | nu):
+   tau=1.0: 1.0012 | 1.0011   (lin plasma 1.518, nu 1.421 per unit delta_m)
+   tau=2.0: 1.0016 | 1.0035   (lin plasma 2.411, nu 2.308 per unit delta_m)
+   tau=3.0: 1.0042 | 1.0063   (lin plasma 1.191, nu 1.795 per unit delta_m)
+   tau=4.0: 1.0162 | 0.9979   (lin plasma 0.286, nu 1.107 per unit delta_m)
+K=64: zero-amplitude sim/lin at tau=1,2,3,4 (plasma | nu):
+   tau=1.0: 1.0007 | 1.0007   (lin plasma 1.518, nu 1.421 per unit delta_m)
+   tau=2.0: 1.0007 | 1.0005   (lin plasma 2.411, nu 2.308 per unit delta_m)
+   tau=3.0: 1.0009 | 1.0023   (lin plasma 1.191, nu 1.795 per unit delta_m)
+   tau=4.0: 1.0022 | 1.0037   (lin plasma 0.286, nu 1.107 per unit delta_m)

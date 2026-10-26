@@ -1,0 +1,5 @@
+   kap=0.0 delta=0.52800: dispersed eps=6.43 (52s)
+   kap=0.0 delta=0.53000: BH eps=5.45 (43s)
+   kap=0.0 delta=0.52900: BH eps=5.95 (42s)
+   kap=0.0 delta=0.52850: BH eps=6.59 (49s)
+RESULT kap=0.0: delta_c = 0.52825 +- 0.00025 (3.1 min)

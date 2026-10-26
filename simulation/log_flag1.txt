@@ -1,0 +1,6 @@
+   nu409_flag delta=0.53000: BH at eps=5.45 (35s)
+   nu409_flag delta=0.52500: dispersed at eps=5.32 (34s)
+   nu409_flag delta=0.52750: dispersed at eps=6.02 (41s)
+   nu409_flag delta=0.52875: BH at eps=6.19 (40s)
+   nu409_flag delta=0.52813: dispersed at eps=6.63 (42s)
+   nu409_flag delta=0.52844: BH at eps=6.78 (42s)

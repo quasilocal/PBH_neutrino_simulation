@@ -1,0 +1,14 @@
+1. Homogeneous universe (Sec. III B b): anisotropy and inhomogeneity < 1e-9; mean-density drift -1.4e-6 at eps = 3
+   anisotropy 1.0e-11, inhomogeneity 8.3e-12, drift e/e_b - 1 = -1.4e-06
+2. Linear theory (App. B), neutrinos decoupled from the start: superhorizon factors 1.049 (R_nu = 0.409) and 1.058 (0.488);
+   first maximum of Delta lower by the factors 0.911 and 0.897
+   R_nu = 0.409: superhorizon 1.049, first maximum 0.911
+   R_nu = 0.488: superhorizon 1.058, first maximum 0.897
+3. Thresholds bracketed by two runs each (N = 400, N_mu = 32, eps0 = 0.1)
+   perfect fluid, delta_m = 0.4965 (d_c = 0.49773) dispersed (expected dispersed) eps =  5.65  [min I = 0.0e+00, min dR = 6.0e-02, max constraint residual = 1.6e-04, fallback = False]
+   perfect fluid, delta_m = 0.4990             BH        (expected BH       ) eps =  5.37  [min I = 0.0e+00, min dR = 2.2e-02, max constraint residual = 2.8e-04, fallback = False]
+   free streaming, delta_m = 0.5270 (d_c = 0.52832) dispersed (expected dispersed) eps =  5.79  [min I = 2.0e-08, min dR = 5.6e-02, max constraint residual = 1.0e-03, fallback = False]
+   free streaming, delta_m = 0.5295            BH        (expected BH       ) eps =  5.65  [min I = 2.1e-08, min dR = 2.1e-02, max constraint residual = 9.8e-04, fallback = False]
+   strong coupling, delta_m = 0.4970 (d_c = 0.4980) dispersed (expected dispersed) eps =  5.79  [min I = 3.0e-08, min dR = 5.6e-02, max constraint residual = 2.0e-04, fallback = n/a]
+   strong coupling, delta_m = 0.4995           BH        (expected BH       ) eps =  5.25  [min I = 4.4e-08, min dR = 2.2e-02, max constraint residual = 2.6e-04, fallback = n/a]
+done in 4.7 min

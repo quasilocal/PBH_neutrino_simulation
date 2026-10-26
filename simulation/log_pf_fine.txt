@@ -1,0 +1,7 @@
+   pf_fine delta=0.49775: BH at eps=6.55 (40s)
+   pf_fine delta=0.49762: dispersed at eps=6.72 (39s)
+   pf_fine delta=0.49769: BH at eps=7.09 (43s)
+   pf_fine delta=0.49766: dispersed at eps=6.95 (46s)
+   pf_fine delta=0.49767: crash at eps=7.15 (43s)
+   stop: crash
+RESULT pf_fine: delta_c = 0.49767 +- 0.00002  (3.5 min)

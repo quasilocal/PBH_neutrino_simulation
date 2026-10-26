@@ -1,0 +1,47 @@
+   fl_e02 delta=0.50000: BH at eps=5.73 (1s)
+   fl_e02 delta=0.49000: dispersed at eps=4.75 (1s)
+   fl_e02 delta=0.49500: dispersed at eps=5.10 (1s)
+   fl_e02 delta=0.49750: dispersed at eps=5.48 (1s)
+   fl_e02 delta=0.49875: dispersed at eps=5.94 (1s)
+   fl_e02 delta=0.49938: BH at eps=6.80 (1s)
+   fl_e02 delta=0.49906: dispersed at eps=6.22 (1s)
+   fl_e02 delta=0.49922: dispersed at eps=6.48 (1s)
+RESULT fl_e02: delta_c = 0.49930 +- 0.00008  (0.1 min)
+   nu409_e02 delta=0.53000: BH at eps=6.15 (46s)
+   nu409_e02 delta=0.51500: dispersed at eps=4.52 (32s)
+   nu409_e02 delta=0.52250: dispersed at eps=4.94 (34s)
+   nu409_e02 delta=0.52625: dispersed at eps=5.35 (41s)
+   nu409_e02 delta=0.52812: dispersed at eps=5.79 (42s)
+   nu409_e02 delta=0.52906: dispersed at eps=6.30 (42s)
+Traceback (most recent call last):
+  File "/home/claude/pbhsim/bisect_gen.py", line 8, in <module>
+    dc, w, log = bisect(lo, hi, tol=tol, tag=tag, fnu=fnu, K=K, eps0=eps0, N=N, qshape=qs, cH=cH, eps_max=15.0)
+                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/pbhsim/bisect_nu.py", line 7, in bisect
+    mid = 0.5*(lo+hi); t1 = time.time(); out = run(mid, **kw)
+                                               ~~~^^^^^^^^^^^
+  File "/home/claude/pbhsim/run_nu.py", line 42, in run
+    rhs(t+dt, R1, U1, G1, e1, I1, mue, fnu, fnu/(1-fnu)*e1[-1]/(4*np.pi), dR, dU, dG, de, dI)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ZeroDivisionError: division by zero
+   fl_q2 delta=0.57500: BH at eps=2.96 (1s)
+   fl_q2 delta=0.53750: BH at eps=4.29 (1s)
+   fl_q2 delta=0.51875: dispersed at eps=3.93 (1s)
+   fl_q2 delta=0.52812: dispersed at eps=4.47 (1s)
+   fl_q2 delta=0.53281: BH at eps=5.90 (1s)
+   fl_q2 delta=0.53047: dispersed at eps=4.78 (1s)
+   fl_q2 delta=0.53164: dispersed at eps=5.07 (1s)
+   fl_q2 delta=0.53223: dispersed at eps=5.34 (1s)
+   fl_q2 delta=0.53252: dispersed at eps=5.60 (1s)
+   fl_q2 delta=0.53267: dispersed at eps=5.89 (1s)
+RESULT fl_q2: delta_c = 0.53274 +- 0.00007  (0.1 min)
+   nu409_q2 delta=0.61000: BH at eps=2.79 (19s)
+   nu409_q2 delta=0.56500: BH at eps=5.08 (36s)
+   nu409_q2 delta=0.54250: dispersed at eps=3.74 (26s)
+   nu409_q2 delta=0.55375: dispersed at eps=4.21 (30s)
+   nu409_q2 delta=0.55937: dispersed at eps=4.68 (32s)
+   nu409_q2 delta=0.56219: dispersed at eps=5.26 (36s)
+   nu409_q2 delta=0.56359: BH at eps=6.23 (45s)
+   nu409_q2 delta=0.56289: dispersed at eps=5.60 (44s)
+   nu409_q2 delta=0.56324: dispersed at eps=5.95 (40s)
+RESULT nu409_q2: delta_c = 0.56342 +- 0.00018  (5.1 min)

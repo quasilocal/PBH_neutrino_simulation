@@ -1,0 +1,8 @@
+/home/claude/pbhsim/review_tests/../run_eosc.py:52: RuntimeWarning: invalid value encountered in scalar divide
+  hist.append((t, epsn, C[iC], r[1+iC], e[0]/e[-1], (I[0].sum()*dmu*2*np.pi)/(I[-1].sum()*dmu*2*np.pi), Tb, kb/Hb))
+   N=400 delta=0.52100: BH eps=5.92
+   N=400 delta=0.51950: dispersed eps=5.56
+   N=400 delta=0.52025: dispersed eps=5.93
+   N=400 delta=0.52063: dispersed eps=6.49
+   N=400 delta=0.52081: BH eps=6.26
+RESULT N=400 Tdec=1 T0=10: TH=1.0029 delta_c=0.52072 +- 0.00009 (10.0 min)

@@ -1,0 +1,1 @@
+fnu=0.409 delta=0.53832: crash at eps=4.92 (32s); AH from eps=4.24 M_AH=0.4715 to eps=4.92 M_AH=0.7813 (1231 samples)

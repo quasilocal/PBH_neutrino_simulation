@@ -1,0 +1,10 @@
+M = 1e+06: Delta = 0.0926
+   GN: p for beta_max = 1e-15: perfect fluid 0.5831  ->  neutrinos 0.5645  (change -0.0186)
+   ST: p for beta_max = 1e-15: perfect fluid 0.6213  ->  neutrinos 0.6015  (change -0.0198)
+   PL: q for beta_max = 1e-15: perfect fluid 5.6709  ->  neutrinos 5.5145  (change -0.1564)
+   LN: s for beta_max = 1e-15: perfect fluid 0.4928  ->  neutrinos 0.5091  (change +0.0163)
+M = 1e+07: Delta = 0.0958
+   GN: p for beta_max = 1e-15: perfect fluid 0.5557  ->  neutrinos 0.5378  (change -0.0178)
+   ST: p for beta_max = 1e-15: perfect fluid 0.5920  ->  neutrinos 0.5729  (change -0.0191)
+   PL: q for beta_max = 1e-15: perfect fluid 5.4409  ->  neutrinos 5.2944  (change -0.1465)
+   LN: s for beta_max = 1e-15: perfect fluid 0.5172  ->  neutrinos 0.5340  (change +0.0168)

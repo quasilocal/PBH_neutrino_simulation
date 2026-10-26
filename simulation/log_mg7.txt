@@ -1,0 +1,53 @@
+   phys6 T0=7.0 delta=0.52300: dispersed eps=5.88 (423s)
+   phys6 T0=7.0 delta=0.52400: BH eps=5.65 (411s)
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ~~~~^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "/home/claude/pbhsim/trisect_mg.py", line 12, in one
+    out = run(dm, T0, **kw)
+  File "/home/claude/pbhsim/run_mg.py", line 80, in run
+    tab, frac, Tof = make_eos('pf' if tight else 'fs', T0, eps0)
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/pbhsim/run_eos.py", line 15, in make_eos
+    T = TB['T'][::-1]; rpl = TB['rpl'][::-1]; ppl = TB['ppl'][::-1]; rnu = TB['rnu'][::-1]
+        ~~^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_npyio_impl.py", line 257, in __getitem__
+    return format.read_array(
+           ~~~~~~~~~~~~~~~~~^
+        bytes,
+        ^^^^^^
+    ...<2 lines>...
+        max_header_size=self.max_header_size
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_format_impl.py", line 871, in read_array
+    data = _read_bytes(fp, read_size, "array data")
+  File "/usr/local/lib/python3.13/dist-packages/numpy/lib/_format_impl.py", line 1015, in _read_bytes
+    r = fp.read(size - len(data))
+  File "/usr/lib/python3.13/zipfile/__init__.py", line 1045, in read
+    data = self._read1(n)
+  File "/usr/lib/python3.13/zipfile/__init__.py", line 1151, in _read1
+    self._update_crc(data)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/zipfile/__init__.py", line 1063, in _update_crc
+    raise BadZipFile("Bad CRC-32 for file %r" % self.name)
+zipfile.BadZipFile: Bad CRC-32 for file 'T.npy'
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/claude/pbhsim/trisect_mg.py", line 18, in <module>
+    res = pool.map(one, pts)
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 774, in get
+    raise self._value
+zipfile.BadZipFile: Bad CRC-32 for file 'T.npy'

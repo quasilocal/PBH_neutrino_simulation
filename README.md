@@ -1,0 +1,111 @@
+# Free-streaming neutrinos leave a step in the primordial black hole mass function
+
+Code, data and scripts for the paper.
+
+## Quick start
+
+You need Python 3.13 (from python.org, or Anaconda/Miniconda). In a terminal (on Windows: PowerShell or Command Prompt), from this folder:
+
+```
+python -m venv .venv
+.venv\Scripts\activate            # Windows
+source .venv/bin/activate           # macOS and Linux
+python -m pip install -r requirements.txt
+python reproduce.py check           # about 5 min: checks against numbers quoted in the paper
+python reproduce.py figures         # under a minute: redraws the five figures into reproduced/figures
+python reproduce.py tables          # about 2 min: recomputes Tables IV and V and the mass functions, and compares
+python reproduce.py list            # the commands for the long simulations, with run times
+```
+
+`reproduce.py` writes only into `reproduced/` and never changes a shipped file. The first run of each step is slower because Numba compiles the simulation code (compiled code is cached for later runs). Add `--latex` to `figures` to render the figure text with LaTeX, which needs a TeX installation with `type1cm` and `cm-super`. If your Python is called `python3`, use that name instead of `python`. The archived results (`simulation/res_*.json`) are the ones quoted in the paper; the long simulations that produce them take minutes to hours each (see `python reproduce.py list` and the sections below).
+
+## Requirements
+
+- Python 3 with NumPy, SciPy and Numba. Every simulation module is compiled with Numba and does not run without it.
+- mpmath, only for `simulation/seeds/seed_window.py`.
+- Matplotlib for the figures. By default the figure scripts render text with LaTeX, which needs a TeX installation with the `type1cm` and `cm-super` packages; with `PBH_USETEX=0` they use Matplotlib's built-in mathtext instead. The scripts write `fig_<name>.pdf` into `paper/`, next to `paper.tex`.
+- Tested with Python 3.13.16, NumPy 2.5.3, SciPy 1.18.1, Numba 0.68.0, mpmath 1.3.0 and Matplotlib 3.11.2.
+
+## Layout
+
+| Folder | Contents |
+|---|---|
+| `paper/` | LaTeX source (REVTeX 4.2), bibliography, final figures (`fig_*.pdf`) |
+| `paper/figs/` | Figure scripts (`fig_*.py`, shared style in `style.py`) and the small data files they read |
+| `simulation/` | Simulation code, every threshold result (`res_*.json`), run logs (`log*.txt`), thermodynamic tables |
+| `simulation/massfn/` | Mass functions (Sec. V A, Fig. 5) |
+| `simulation/seeds/` | Distortion-capped seed abundances for non-Gaussian tails (Sec. V B, Table V) |
+| `simulation/review_tests/` | Tests of the multigroup model added in response to the code audit: `bracket_mg.py` runs pairs at the archived threshold ± 0.001 for the local e± correction (`chi_local=True`), a wider energy grid (G = 8, x up to 80), smaller time steps (`dthalf`: H dt and CFL numbers halved; `dtall`: also κ dt ≤ 0.25 via `ckap`) and a boosted, momentum-conserving neutrino–neutrino term (`nnmode=1`), one at a time and combined (wide grid with the boosted term, with and without the local correction: `x80boost`, `x80boostchi`); `bisect_eosc_N400.py` checks the resolution of the single-rate scan; `vrel_mg.py` records the relative motion of neutrinos and plasma (Sec. II B). Results in `res_test_*.json`, `res_eosc_N400_*.json` and `res_vrel_*.json`, logs in `log_*.txt`; `summarize.py` writes the table `summary.txt`. The new options default to the archived behaviour (a regression run to ε = 0.6 gives bit-for-bit identical intensities). |
+| `simulation/review_checks/` | Checks added in response to review: central ζ at threshold (zeta_center.py), linear theory on the two slicings (linear_slicing.py), mass-weighted and peak-theory abundance ratios (massweight.py) |
+
+## Main modules
+
+| File | What it does |
+|---|---|
+| `ms_nu.py`, `run_nu.py` | Misner–Sharp equations with angle-resolved neutrino transport, pure radiation (fixed `R_nu`) |
+| `ms_eosc.py`, `run_eosc.py`, `run_eos.py` | Full model: e± plasma equation of state, neutrinos decoupling through the collision term |
+| `ms_eosc2.py`, `run_eosc2.py` | Full model with two neutrino species that decouple separately (ν_e and ν_μ,τ) |
+| `ms_mg.py`, `run_mg.py`, `bisect_mg.py` | Full model with energy groups and the energy-dependent weak rates, including scattering among neutrinos (Appendix C). Test options of `run_mg.run`: `chi_local`, `nnmode`, `ckap`, `diag_every` (flux ratios, top-group energy fraction, minimum intensity); their defaults reproduce the archived runs bit for bit |
+| `multigroup/weak_rates.py` | Monte Carlo rates Γ(E) for all weak processes, with Fermi–Dirac statistics and Pauli blocking (writes `weak_rates.json`) |
+| `make_phys_curve.py` | Physical threshold curve: multigroup thresholds, plus the single-rate model with T_dec = 1 MeV where neutrinos are coupled or free-streaming throughout (writes `res_phys_*.json`) |
+| `ms_nuc.py`, `run_nuc.py` | Gradual decoupling with `kappa = H (eps_dec/eps)^3` |
+| `ms_fluid.py`, `run_fluid.py` | Perfect-fluid reference code and the gradient-expansion initial data |
+| `thermo.py` | Plasma and neutrino thermodynamics (writes `thermo_tables.npz`) |
+| `linear_nu.py`, `linear_pred.py`, `lin_offcentre.py`, `linproxy_R.py` | Linear Boltzmann solver and the linear-theory comparisons (Fig. 2, App. B) |
+| `bisect_*.py` | Threshold bisections; results go to `res_<tag>.json` (`dc` = midpoint, `w` = bracket width) |
+| `bh_mass.py`, `bh_accrete.py` | Apparent-horizon masses near threshold (Table III) and their growth after formation |
+| `compare_two_flavour.py` | Two-flavour against one-flavour thresholds (Sec. IV D) |
+
+## Reproducing the results
+
+Run the simulation scripts from inside `simulation/`.
+
+- **Table I (convergence).** `python3 bisect_gen.py <tag> 0.409 <N_mu> 0.1 <N> 0.52 0.54 1.0 2.5e-4 [cH] [rmax]`. The outer-edge check for the broad profile is `q_r15.sh`/`q_r15b.sh` (alpha = 0.3, r_max = 15, N = 667).
+- **Table II and Fig. 3 (pure radiation).** `bisect_gen.py` with `fnu` = 0.10–0.488, `eps0` = 0.05–0.25, profile `alpha` = 0.3, 0.5, 1, 2, 4 (e.g. `python3 bisect_gen.py nu409_q4 0.409 32 0.1 400 0.54 0.70 4.0 2.5e-4`). The gradual-decoupling rows use `bisect_dec.py`.
+- **Fig. 4 (single-rate scans).** `python3 bisect_eosc.py <T_dec> <T0 list> 0.48 0.55 3e-4` for T_dec = 0.75, 1, 1.5, 2, 3 MeV, and `bisect_eos.py pf <T0 list> ...` for the perfect fluid. T0 = 10 T_H. Two flavours: `python3 bisect_eosc2.py 1.5 2.5 <T0> <lo> <hi> 2.6e-4` (the brackets used are in `q_two1.sh`, `q_two2.sh`; `bisect_eosc2.py 2.0 2.0 20 ...` is the check against the one-flavour code).
+- **Fig. 4 (physical curve, Appendix C).** `cd multigroup && python3 weak_rates.py`; then from `simulation/`: `python3 bisect_mg.py phys6 <T0> <lo> <hi> 4e-4 mode=phys G=6 x_lo=0.4 x_hi=20` for T0 = 40, 20, 10, 5, 3 (the brackets used are in `q_mg1.sh`–`q_mg4.sh`) and `python3 trisect_mg.py phys6 7 0.5220 0.5250 3.5e-4 mode=phys G=6 x_lo=0.4 x_hi=20` (two trial amplitudes per round, in parallel), the single-rate scans `python3 bisect_eosc.py 1.0 <T0 list> ...` and `bisect_eosc.py 0.75 ...` (`q_gray1a.sh`–`q_gray1c.sh`, `q_gray075.sh`), and `python3 make_phys_curve.py`. Checks: `python3 mg_validate.py` (multigroup with the gray rate against the gray code), `bisect_mg.py G10 ...` (ten groups), `bisect_mg.py nonunu6 ... nunu=0` (no scattering among neutrinos).
+- **Table III (black-hole masses).** `python3 bh_mass.py 0.0 0.49767 0.1,0.03,0.01,0.003,0.001,0.0003,0.0001`, and the same with `0.409 0.52832`.
+- **Fig. 5.** `cd massfn && python3 mass_function.py` for panel (a); panel (b) is computed in `paper/figs/fig_massfn.py` from the mass scan.
+- **Tables IV and V.** `cd seeds && python3 seed_window.py && python3 seed_bounds.py && python3 seed_edges.py` (the last gives the window-edge factors quoted in Sec. V B). Table IV also uses `paper/figs/numbers_stats.py`.
+- **Figures.** From `paper/figs/`, run `python3 fig_<name>.py` (dynamics, linear, scaling, mass, massfn).
+
+## Quick checks
+
+`python reproduce.py check`, or `cd simulation && python run_tests.py` (about five minutes on one core; our output is in `review_tests/log_run_tests.txt`), repeats the homogeneous-universe test, the linear-theory factors of Appendix B, and two-run brackets of the perfect-fluid, free-streaming and strong-coupling thresholds, and prints them next to the values in the paper. For each run it also reports the minimum neutrino intensity, the minimum radial spacing, the residual of the constraint Γ² = 1 + U² − 2M/R and whether the fallback rule decided the outcome.
+
+## Runtime
+
+Measured on one core of a 2-core Linux machine. In a fresh environment, `python reproduce.py all` took 6 minutes (4.3 for the checks).
+
+| Task | Time |
+|---|---|
+| Pure-radiation bisection (N = 400, N_μ = 32) | 0.1–3.5 min |
+| Full-model single-rate bisection (N = 300) | 3–4 min |
+| One multigroup run (G = 6, the paper's settings) | about 10 min; a multigroup bisection about an hour, or 50 min with `trisect_mg.py` on two cores |
+| `lin_offcentre.py` | 4 min |
+| Seed scripts (`seeds/`) | a few seconds here; about 10 min was reported on another machine |
+| `massfn/mass_function.py` | 1 s |
+
+## Which file holds which number
+
+| Paper | Result files |
+|---|---|
+| Table I | `res_nu409_K16.json` (N_μ = 16), `res_nu409_fine.json` (N_μ = 32; same case as `res_nu32.json` and `res_nu409_flag.json` at coarser tolerance), `res_nu409_N800.json`, `res_nu409_r15.json`, `res_nu409_K64b.json` |
+| Table II, R_ν rows | `res_fluid.json`; `res_nu10_K32.json`, `res_nu20_K32.json`, `res_nu30_K32.json`, `res_nu32.json`, `res_nu488_K32.json` |
+| Table II, ε₀ rows | `res_fl_e005.json`, `res_fl_e02.json`, `res_fl_e025.json`; `res_nu409_e005.json`, `res_nu409_e02b.json`, `res_nu488_e025.json` |
+| Table II, gradual decoupling | `res_dec_<eps_dec>.json` |
+| Table II, profile shapes | `res_fl_q03.json`, `res_fl_q05.json`, `res_fl_q2.json`, `res_fl_q4.json`; `res_nu409_q03.json`, `res_nu409_q05.json`, `res_nu409_q2.json`, `res_nu409_q4.json` |
+| Sec. III B, outer edge for α = 0.3 | `res_fl_q03_r15.json`, `res_nu409_q03_r15.json` |
+| Sec. III B, strong coupling | `res_nuc_100.0.json` (`res_nuc_0.0.json`: collisionless check) |
+| Sec. III B, fallback rule flagged | `res_pf_flag.json`, `res_nu409_flag.json`; full model `res_eoscflag_2.0_1.0.json`, `res_eoscflag_2.0_10.0.json` |
+| Table III | thresholds `res_pf_fine.json`, `res_nu409_fine.json`; masses `res_bhmass_fnu0.0_N400_K32.json`, `res_bhmass_fnu0.409_N400_K32.json`; growth `res_accrete_*.json` |
+| Fig. 4 | perfect fluid `res_eos_pf_<T0>.json`; single-rate model `res_eosc_<T_dec>_<T0>.json`; multigroup `res_mg_phys6_<T0>.json`; physical curve `res_phys_<T0>.json`; checks `res_mg_G10_*.json`, `res_mg_nonunu6_*.json`, `res_eosc2_*.json` |
+| Sec. III B, resolution of the single-rate scan | `review_tests/res_eosc_N400_1.0_10.0.json` (N = 400) against `res_eosc_1.0_10.0.json` (N = 300) |
+| Sec. II B, neutrino flux relative to the plasma | `review_tests/res_vrel_20.0.json`, `review_tests/res_vrel_10.0.json` |
+| App. C, Tests (bracket tests) | `review_tests/res_test_<variant>_<T0>_<delta>.json`, `review_tests/log_bracket*.txt` |
+| Tables IV, V and Sec. V B | `seeds/*_out.txt`, `seeds/seed_bounds.json`, `paper/figs/numbers_stats.py` |
+
+## Notes
+
+- The results in `res_*.json` and the logs are the ones quoted in the paper.
+- The code was written by an AI system (Claude, Anthropic) under the author's direction. See the AI disclosure in the paper.

@@ -1,0 +1,7 @@
+   phys6 T0=10.0 delta=0.51800: dispersed eps=5.47 (516s)
+   phys6 T0=10.0 delta=0.52300: BH eps=4.72 (477s)
+   phys6 T0=10.0 delta=0.52050: BH eps=5.38 (542s)
+   phys6 T0=10.0 delta=0.51925: dispersed eps=6.17 (623s)
+   phys6 T0=10.0 delta=0.51987: BH eps=5.80 (590s)
+   phys6 T0=10.0 delta=0.51956: BH eps=6.35 (621s)
+RESULT phys6 T0=10.0: TH=1.0030 delta_c=0.51941 +- 0.00016 (56.1 min)

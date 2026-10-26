@@ -1,0 +1,6 @@
+   nu409_K16 delta=0.52800: BH at eps=6.13 (13s)
+   nu409_K16 delta=0.52600: dispersed at eps=5.71 (11s)
+   nu409_K16 delta=0.52700: dispersed at eps=6.21 (13s)
+   nu409_K16 delta=0.52750: dispersed at eps=7.18 (15s)
+   nu409_K16 delta=0.52775: BH at eps=6.49 (14s)
+RESULT nu409_K16: delta_c = 0.52763 +- 0.00012  (1.1 min)
