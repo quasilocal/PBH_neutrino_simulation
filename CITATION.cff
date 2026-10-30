@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata below."
 type: software
-title: "Code for: Free-streaming neutrinos leave a step in the primordial black hole mass function"
+title: "Code for: Free-streaming neutrinos raise the threshold for primordial black hole formation"
 authors:
   - family-names: McCormick
     given-names: Stephen
