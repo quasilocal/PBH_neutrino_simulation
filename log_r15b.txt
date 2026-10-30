@@ -1,0 +1,8 @@
+   nu409_q03_r15 delta=0.47800: BH at eps=7.42 (85s)
+   nu409_q03_r15 delta=0.47400: dispersed at eps=6.91 (75s)
+   nu409_q03_r15 delta=0.47600: dispersed at eps=7.24 (83s)
+   nu409_q03_r15 delta=0.47700: dispersed at eps=7.74 (89s)
+   nu409_q03_r15 delta=0.47750: dispersed at eps=8.83 (100s)
+   nu409_q03_r15 delta=0.47775: BH at eps=7.96 (84s)
+   nu409_q03_r15 delta=0.47762: BH at eps=8.53 (87s)
+RESULT nu409_q03_r15: delta_c = 0.47756 +- 0.00006  (10.1 min)

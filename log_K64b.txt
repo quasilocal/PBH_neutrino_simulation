@@ -1,0 +1,4 @@
+   nu409_K64b delta=0.52855: BH at eps=7.23 (182s)
+   nu409_K64b delta=0.52833: dispersed at eps=6.65 (181s)
+   nu409_K64b delta=0.52844: dispersed at eps=6.96 (179s)
+RESULT nu409_K64b: delta_c = 0.52849 +- 0.00006  (9.0 min)

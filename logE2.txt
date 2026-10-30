@@ -1,0 +1,16 @@
+   fs T0=3.0 delta=0.53000: BH eps=4.50 TH=0.31008530707421944 (79s)
+   fs T0=3.0 delta=0.51500: dispersed eps=4.67 TH=0.31007602337844575 (75s)
+   fs T0=3.0 delta=0.52250: dispersed eps=5.38 TH=0.3100652600694919 (67s)
+   fs T0=3.0 delta=0.52625: BH eps=5.28 TH=0.31007529147030377 (66s)
+   fs T0=3.0 delta=0.52438: dispersed eps=6.03 TH=0.31007027776782575 (77s)
+   fs T0=3.0 delta=0.52531: BH eps=5.87 TH=0.31007278512427633 (76s)
+   fs T0=3.0 delta=0.52484: dispersed eps=6.78 TH=0.31007153157097234 (89s)
+RESULT fs T0=3.0: TH=0.3101 MeV delta_c=0.52508 +- 0.00023
+   fs T0=2.0 delta=0.53000: BH eps=4.10 TH=0.2136473037411688 (51s)
+   fs T0=2.0 delta=0.51500: dispersed eps=5.14 TH=0.21365727825488207 (62s)
+   fs T0=2.0 delta=0.52250: BH eps=4.95 TH=0.21366219736343087 (61s)
+   fs T0=2.0 delta=0.51875: dispersed eps=6.02 TH=0.21364984872238932 (75s)
+   fs T0=2.0 delta=0.52063: BH eps=5.52 TH=0.21365602481777357 (69s)
+   fs T0=2.0 delta=0.51969: BH eps=6.35 TH=0.2136529372120791 (78s)
+   fs T0=2.0 delta=0.51922: dispersed eps=6.42 TH=0.21365139307693534 (78s)
+RESULT fs T0=2.0: TH=0.2137 MeV delta_c=0.51945 +- 0.00023
