@@ -5,7 +5,7 @@ title: "Code for: Free-streaming neutrinos leave a step in the primordial black 
 authors:
   - family-names: McCormick
     given-names: Stephen
-    affiliation: "Division of Mathematical Sciences, Luleå University of Technology"
+    affiliation: "Division of Mathematical Sciences, Luleå University of Technology, Luleå, Sweden"
 repository-code: "https://github.com/quasilocal/PBH_neutrino_simulation"
 license: MIT
 abstract: >-
