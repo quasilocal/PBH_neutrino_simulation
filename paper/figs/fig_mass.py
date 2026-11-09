@@ -41,13 +41,13 @@ for ax in (a1, a2):
     ax.axvspan(*band, color='#efeee9', lw=0, zorder=0)
     ax.set_xscale('log'); ax.set_xlim(*XL)
     ax.xaxis.set_major_locator(LogLocator(base=10, numticks=12)); ax.xaxis.set_minor_formatter(NullFormatter())
-a2.set_xlabel(r'horizon mass at horizon crossing $M_H$ [$M_\odot$]')
-a1.set_xlabel(r'horizon mass at horizon crossing $M_H$ [$M_\odot$]')
+a2.set_xlabel(r'horizon mass at horizon crossing $M_H$ ($M_\odot$)')
+a1.set_xlabel(r'horizon mass at horizon crossing $M_H$ ($M_\odot$)')
 for ax in (a1, a2):
     top = ax.secondary_xaxis('top', functions=(m2t, t2m))
     top.xaxis.set_major_locator(FixedLocator([10, 3, 1, 0.3, 0.1])); top.xaxis.set_minor_locator(NullLocator())
     top.set_xticklabels(['10', '3', '1', '0.3', '0.1'])
-    top.set_xlabel(r'temperature at horizon crossing $T_H$ [MeV]', fontsize=7.5, labelpad=3)
+    top.set_xlabel(r'temperature at horizon crossing $T_H$ (MeV)', fontsize=7.5, labelpad=3)
     top.spines['top'].set_visible(True); top.spines['top'].set_linewidth(0.5); top.spines['top'].set_color(style.AXIS)
 
 # (a) threshold against horizon mass

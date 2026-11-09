@@ -10,7 +10,7 @@ repository-code: "https://github.com/quasilocal/PBH_neutrino_simulation"
 license: MIT
 abstract: >-
   Simulation code, stored results and scripts for the paper "Free-streaming
-  neutrinos leave a step in the primordial black hole mass function". The code
+  neutrinos raise the threshold for primordial black hole formation". The code
   follows the general-relativistic collapse of spherical perturbations with the
   photon-electron plasma as a fluid and the neutrinos by their transport
   equation, coupled by collision terms that decouple them at a physical rate,

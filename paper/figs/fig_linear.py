@@ -32,7 +32,7 @@ a1.text(3.28, 1.80, 'neutrinos', fontsize=7.5, color=style.INK, ha='left', va='c
 style.label(a1, '(a)')
 a2.axhline(0, color=style.MUTED, lw=0.5)
 a2.set_ylim(-0.6, 0.6); a2.set_yticks([-0.5, 0, 0.5])
-a2.set_ylabel(r'residual [\%]')
+a2.set_ylabel(r'residual (\%)')
 a2.set_xlabel(r'$\epsilon = 1/(aHr_m)$')
 a2.set_xlim(0, 4.1)
 a2.text(0.985, 0.06, style.tex(r'solid: $N_\mu=64$,\ \ dashed: $N_\mu=32$'), transform=a2.transAxes, ha='right', va='bottom', fontsize=7.5,

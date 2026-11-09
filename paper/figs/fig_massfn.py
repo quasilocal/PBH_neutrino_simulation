@@ -35,7 +35,7 @@ stats = [('Gaussian', erfc((1 + Dl)*xg/np.sqrt(2))/beta),
 
 fig, (a1, a2) = plt.subplots(1, 2, figsize=(style.TXT_W, 2.6))
 a2.axvspan(*band, color='#efeee9', lw=0, zorder=0)
-MU_EDGE = 2e4     # Gaussian zeta at this amplitude violates the FIRAS mu bound above M_H ~ 3e4 Msun, i.e. M ~ 2e4 Msun (Sec. V A)
+MU_EDGE = 3e4     # Gaussian zeta at this amplitude violates the FIRAS mu bound above M_H ~ 3e4 Msun; with K = 5.9 typical M ~ 0.97 M_H (Sec. V A)
 a1.axvspan(MU_EDGE, 2e8, facecolor='none', edgecolor=style.GRID, hatch='////', lw=0, zorder=0)
 for ax in (a1, a2):
     ax.set_xscale('log'); ax.set_yscale('log')
@@ -51,8 +51,8 @@ a1.plot(M, nua/n, color=style.BLUE, lw=1.3, label=r'decoupling neutrinos')
 a1.set_xlim(1e2, 2e8)
 a1.set_ylim(3e-6, 3); a1.yaxis.set_major_locator(FixedLocator([1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1]))
 a1.set_yticklabels([r'$10^{-5}$', r'$10^{-4}$', r'$10^{-3}$', r'$10^{-2}$', r'$10^{-1}$', r'$1$'])
-a1.set_ylabel(r'mass function $\psi(M)$')
-a1.set_xlabel(r'black-hole mass $M$ [$M_\odot$]')
+a1.set_ylabel(r'mass function $\psi(M_{\rm PBH})$')
+a1.set_xlabel(r'black-hole mass $M_{\rm PBH}$ ($M_\odot$)')
 a1.text(5e6, 2.5e-3, r'$e^\pm$ annihilation', fontsize=7.0, color=style.INK, ha='center', va='top')
 a1.text(1.3e6, 1.6, r'excluded by $\mu$ distortions', fontsize=7.0, color=style.INK, ha='center', va='top',
         bbox=dict(facecolor='white', edgecolor='none', pad=1.0))
@@ -72,7 +72,7 @@ a2.set_xlim(1e2, 2e8)
 a2.set_ylim(1e-3, 2.0); a2.yaxis.set_major_locator(FixedLocator([1e-3, 1e-2, 1e-1, 1]))
 a2.set_yticklabels([r'$10^{-3}$', r'$10^{-2}$', r'$10^{-1}$', r'$1$'])
 a2.set_ylabel(r'probability ratio $\beta_\nu/\beta_{\rm pf}$')
-a2.set_xlabel(r'horizon mass at horizon crossing $M_H$ [$M_\odot$]')
+a2.set_xlabel(r'horizon mass at horizon crossing $M_H$ ($M_\odot$)')
 style.label(a2, r'(b) three statistics, $\beta_{\rm pf}=10^{-12}$')
 fig.savefig(style.out('fig_massfn.pdf')); print('saved', fig.get_size_inches())
 for lab, ratio in stats:

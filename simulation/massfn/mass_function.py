@@ -26,7 +26,10 @@ TAB = {'pf': table('res_eos_pf_*.json', 'pf'), 'nu': table('res_phys_*.json', 'n
 def dc_of(kind, MH): lnM, d = TAB[kind]; return np.interp(np.log(MH), lnM, d)
 Cl_of = lambda C: (1 - np.sqrt(np.clip(1 - 1.5*C, 0, None)))/0.75
 
-GAMMA, K_PF = 0.36, 4.0
+# K_PF: prefactor measured by Escriva (2020), Phys. Dark Univ. 27, 100466, Sec. VII, for the Gaussian profile with
+# delta_m at r_m and M_H at a H r_m = 1, as used here (the K = 4.02 of Musco, Miller & Polnarev 2009 refers to the
+# amplitude at r_0 and the horizon mass at horizon crossing of r_0, 1.5 times larger)
+GAMMA, K_PF = 0.36, 5.9
 SHIFT_RAD = RAD['nu']/RAD['pf'] - 1      # full free-streaming shift in pure radiation
 def K_of(kind, MH):
     """Prefactor of M = K M_H (delta_m - delta_c)^gamma. With free-streaming neutrinos the apparent horizon forms ~10%
