@@ -23,14 +23,14 @@ python reproduce.py list            # the commands for the long simulations, wit
 
 - Python 3 with NumPy, SciPy and Numba. Every simulation module is compiled with Numba and does not run without it.
 - mpmath, only for `simulation/seeds/seed_window.py`.
-- Matplotlib for the figures. By default the figure scripts render text with LaTeX, which needs a TeX installation with the `type1cm` and `cm-super` packages; with `PBH_USETEX=0` they use Matplotlib's built-in mathtext instead. The scripts write `fig_<name>.pdf` into `paper/`, next to `paper.tex`.
+- Matplotlib for the figures. By default the figure scripts render text with LaTeX, which needs a TeX installation with the `type1cm` and `cm-super` packages; with `PBH_USETEX=0` they use Matplotlib's built-in mathtext instead. The scripts write `fig_<name>.pdf` into `paper/`, over the figures of the paper.
 - Tested with Python 3.13.16, NumPy 2.5.3, SciPy 1.18.1, Numba 0.68.0, mpmath 1.3.0 and Matplotlib 3.11.2.
 
 ## Layout
 
 | Folder | Contents |
 |---|---|
-| `paper/` | LaTeX source (REVTeX 4.2), bibliography, final figures (`fig_*.pdf`) |
+| `paper/` | The five figures of the paper (`fig_*.pdf`). `python reproduce.py figures` redraws them into `reproduced/figures` for comparison |
 | `paper/figs/` | Figure scripts (`fig_*.py`, shared style in `style.py`) and the small data files they read |
 | `simulation/` | Simulation code, every threshold result (`res_*.json`), run logs (`log*.txt`), thermodynamic tables |
 | `simulation/massfn/` | Mass functions (Sec. V A, Fig. 5) |

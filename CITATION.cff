@@ -6,6 +6,7 @@ authors:
   - family-names: McCormick
     given-names: Stephen
     affiliation: "Division of Mathematical Sciences, Luleå University of Technology, Luleå, Sweden"
+    orcid: "https://orcid.org/0000-0001-9536-9908"
 repository-code: "https://github.com/quasilocal/PBH_neutrino_simulation"
 license: MIT
 abstract: >-
