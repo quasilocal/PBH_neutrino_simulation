@@ -1,6 +1,6 @@
-"""Bracket tests for reviewer 1's code audit: for each variant, run the multigroup model at the archived threshold
-+- 0.001. If the outcomes (disperse below, black hole above) are unchanged, the variant moves the threshold by less
-than 0.001 (0.2%). Results: review_tests/res_test_<label>_<T0>_<delta>.json (archived files untouched).
+"""Bracket tests of the multigroup model (App. C, Table VIII): for each variant, run the multigroup model at the
+archived threshold +- 0.001. If the outcomes (disperse below, black hole above) are unchanged, the variant moves the
+threshold by less than 0.001 (0.2%). Results: validation/res_test_<label>_<T0>_<delta>.json (archived files untouched).
 (Second pass with the refined diagnostics: python3 bracket_mg.py diag2)"""
 import sys, os, json, time
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..'))
@@ -15,7 +15,7 @@ VARIANTS = [('baseline', 10.0, {}),
             ('boosted', 5.0, dict(nnmode=1)),
             ('x80', 5.0, dict(G=8, x_hi=80.0)),
             ('dtall', 10.0, dict(cH=0.0025, cfl_r=0.2, cfl_mu=0.2, cfl_E=0.2, ckap=0.25)),   # all limits halved, incl. kappa dt
-            # combined changes (second round of review): wide grid with the boosted target, then also the local e+- correction
+            # combined changes: wide grid with the boosted target, then also the local e+- correction
             ('x80boost', 10.0, dict(G=8, x_hi=80.0, nnmode=1)), ('x80boost', 5.0, dict(G=8, x_hi=80.0, nnmode=1)),
             ('x80boostchi', 10.0, dict(G=8, x_hi=80.0, nnmode=1, chi_local=True)),
             ('x80boostchi', 5.0, dict(G=8, x_hi=80.0, nnmode=1, chi_local=True))]

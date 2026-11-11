@@ -1,0 +1,7 @@
+eos_pf_T0.5_e0.05 delta=0.493828: BH eps=6.01 (15s)
+eos_pf_T0.5_e0.05 delta=0.490828: dispersed eps=5.20 (11s)
+eos_pf_T0.5_e0.05 delta=0.492328: dispersed eps=5.52 (12s)
+eos_pf_T0.5_e0.05 delta=0.493078: dispersed eps=5.87 (14s)
+eos_pf_T0.5_e0.05 delta=0.493453: dispersed eps=6.31 (17s)
+eos_pf_T0.5_e0.05 delta=0.493641: BH eps=6.47 (18s)
+RESULT eos_pf_T0.5_e0.05: delta_c = 0.49355 +- 0.00009 (1.4 min)

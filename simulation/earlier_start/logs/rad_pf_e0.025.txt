@@ -1,0 +1,7 @@
+rad_pf_e0.025 delta=0.497000: dispersed eps=6.38 (5s)
+rad_pf_e0.025 delta=0.500000: BH eps=4.96 (5s)
+rad_pf_e0.025 delta=0.498500: BH eps=5.36 (6s)
+rad_pf_e0.025 delta=0.497750: BH eps=5.75 (8s)
+rad_pf_e0.025 delta=0.497375: BH eps=6.17 (10s)
+rad_pf_e0.025 delta=0.497188: BH eps=6.83 (9s)
+RESULT rad_pf_e0.025: delta_c = 0.49709 +- 0.00009 (0.7 min)

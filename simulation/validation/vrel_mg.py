@@ -1,7 +1,7 @@
-"""Relative motion of neutrinos and plasma in the multigroup model (reviewer 2, item C7): one run just below the
+"""Relative motion of neutrinos and plasma in the multigroup model (Sec. II B and App. C): one run just below the
 archived threshold at T_H = 2 and 1 MeV, recording the largest ratio |q|/eps of the total neutrino flux to the
 neutrino energy density in the plasma frame (relative velocity ~ 3/4 of it) over all cells, while 1 < T_b < 2 MeV
-and while T_b > 1 MeV. Results: review_tests/res_vrel_<T0>.json."""
+and while T_b > 1 MeV. Results: validation/res_vrel_<T0>.json."""
 import sys, os, json
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..'))
 from multiprocessing import Pool

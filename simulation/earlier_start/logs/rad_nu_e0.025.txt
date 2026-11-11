@@ -1,0 +1,7 @@
+rad_nu_e0.025 delta=0.527800: dispersed eps=6.72 (252s)
+rad_nu_e0.025 delta=0.530800: BH eps=5.12 (189s)
+rad_nu_e0.025 delta=0.529300: BH eps=5.57 (178s)
+rad_nu_e0.025 delta=0.528550: BH eps=6.02 (198s)
+rad_nu_e0.025 delta=0.528175: BH eps=6.49 (211s)
+rad_nu_e0.025 delta=0.527988: BH eps=7.23 (230s)
+RESULT rad_nu_e0.025: delta_c = 0.52789 +- 0.00009 (21.0 min)

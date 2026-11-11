@@ -2,9 +2,9 @@
 
     python reproduce.py check      quick checks against numbers quoted in the paper (about 5 min)
     python reproduce.py figures    redraw the five figures from the stored results (under a minute)
-    python reproduce.py tables     recompute the mass functions, the Table IV ratios, the seed tables (Table V) and the
-                                   review checks from the stored thresholds, and compare with the stored outputs
-                                   (about 2 min)
+    python reproduce.py tables     recompute the mass functions, the Table V ratios, the seed tables (Table VI) and the
+                                   quadrature checks (simulation/checks) from the stored thresholds, and compare with
+                                   the stored outputs (about 2 min)
     python reproduce.py all        all three
     python reproduce.py list       the commands for the long simulations behind each table and figure
 
@@ -87,7 +87,7 @@ def report(label, n, worst):
 def check():
     ok, _ = run('run_tests.py', SIM, 'run_tests.txt')
     print('\nCompare each line with the value quoted in it; our own output is in '
-          'simulation/review_tests/log_run_tests.txt.')
+          'simulation/validation/log_run_tests.txt.')
     return ok
 
 
@@ -114,10 +114,10 @@ def tables():
     ok &= run('mass_function.py', os.path.join(wsim, 'massfn'), 'mass_function.txt')[0]
     report('massfn/mass_functions.json', *compare_json(os.path.join(wsim, 'massfn', 'mass_functions.json'),
                                                          os.path.join(SIM, 'massfn', 'mass_functions.json')))
-    # numbers of Secs. IV D and V A, Table IV
+    # numbers of Secs. IV D and V A, Table V
     ok &= run('numbers_mass.py', wfigs, 'numbers_mass.txt')[0]
     ok &= run('numbers_stats.py', wfigs, 'numbers_stats.txt')[0]
-    # Table V and the window-edge factors of Sec. V B
+    # Table VI and the window-edge factors of Sec. V B
     for name in ('seed_window', 'seed_bounds', 'seed_edges'):
         good, text = run(f'{name}.py', os.path.join(wsim, 'seeds'), f'{name}.txt')
         ok &= good
@@ -126,11 +126,11 @@ def tables():
             report(f'seeds/{name}_out.txt', *compare_numbers(text, open(ref, encoding='utf-8').read()))
     report('seeds/seed_bounds.json', *compare_json(os.path.join(wsim, 'seeds', 'seed_bounds.json'),
                                                    os.path.join(SIM, 'seeds', 'seed_bounds.json')))
-    # checks added in review: central zeta at threshold, the two slicings in linear theory, mass-weighted ratios
+    # quadrature checks: central zeta at threshold, the two slicings in linear theory, mass-weighted ratios
     for name in ('zeta_center', 'linear_slicing', 'massweight'):
-        ok &= run(f'{name}.py', os.path.join(wsim, 'review_checks'), f'{name}.txt')[0]
+        ok &= run(f'{name}.py', os.path.join(wsim, 'checks'), f'{name}.txt')[0]
     print(f'\nOutputs and logs are in {os.path.relpath(OUT, ROOT)}; the printed numbers are the ones quoted in '
-          'Secs. IV D and V and in Tables IV and V.')
+          'Secs. IV D and V and in Tables V and VI.')
     return ok
 
 
@@ -148,8 +148,14 @@ Each writes a res_*.json file; the archived ones are the results quoted in the p
   Table III                   python bh_mass.py 0.0 0.49767 0.1,0.03,0.01,0.003,0.001,0.0003,0.0001
                               python bh_mass.py 0.409 0.52832 0.1,0.03,0.01,0.003,0.001,0.0003,0.0001
   Fig. 2                      python lin_offcentre.py                                             4 min
-  App. C tests                python review_tests/bracket_mg.py (about 30 runs of 10 min, on 2 cores)
-                              python review_tests/vrel_mg.py, python review_tests/bisect_eosc_N400.py
+  Table II (eps0 = 0.025),    python earlier_start/calibrate_T0.py (start temperatures, a few minutes), then
+  Table IV                    python earlier_start/bisect_early.py and python earlier_start/summarize.py
+                                                                      10 bisections of 1-30 min, in parallel
+  App. C, Table VIII          python validation/bracket_mg.py (about 30 runs of 10 min, on 2 cores)
+                              python validation/vrel_mg.py, python validation/bisect_eosc_N400.py
+  App. C, energy grid         GitHub Actions: workflow "energy grid" (Actions tab, about 25 min on 17 runners), or
+                              python energy_grid/scan.py run all, then python energy_grid/merge.py
+                                                                      66 multigroup runs of 10-40 min
 The shell scripts q_*.sh and queue*.sh list the exact brackets we used; on Windows run their python lines by hand
 (or use WSL)."""
 

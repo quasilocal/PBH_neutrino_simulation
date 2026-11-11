@@ -1,0 +1,13 @@
+Earlier start: thresholds against the starting time eps0 (the archived runs start at eps0 = 0.1).
+Start temperatures T0 (MeV) at eps0 = 0.05 and 0.025, tuned to keep T_H (T0_calibration.json): pf_0.5_0.05 0.98970, pf_0.5_0.025 1.97471, pf_1.0_0.05 1.99430, pf_1.0_0.025 3.98873, nu_0.5_0.05 0.99108, nu_0.5_0.025 1.97750, nu_1.0_0.05 1.99588, nu_1.0_0.025 3.99189
+
+   case                     eps0   perfect fluid      neutrinos          shift in delta_c   shift in C_l,c
+   pure radiation           0.1    0.49773+-0.00008   0.52832+-0.00003    6.145%             9.634%
+   pure radiation           0.05   0.49727+-0.00008   0.52789+-0.00023    6.159%             9.646%
+   pure radiation           0.025  0.49709+-0.00009   0.52789+-0.00009    6.196%             9.703%
+   heaviest, T_H=0.0625 MeV 0.1    0.49383+-0.00008   0.52457+-0.00012    6.225%             9.677%
+   heaviest, T_H=0.0625 MeV 0.05   0.49355+-0.00009   0.52429+-0.00009    6.229%             9.677%
+   heaviest, T_H=0.0625 MeV 0.025  0.49336+-0.00009   0.52429+-0.00009    6.269%             9.738%
+   dip, T_H=0.117 MeV       0.1    0.48602+-0.00008   0.51543+-0.00012    6.052%             9.232%
+   dip, T_H=0.117 MeV       0.05   0.48573+-0.00009   0.51496+-0.00009    6.017%             9.170%
+   dip, T_H=0.117 MeV       0.025  0.48555+-0.00009   0.51477+-0.00009    6.019%             9.170%

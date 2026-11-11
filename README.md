@@ -13,7 +13,7 @@ source .venv/bin/activate           # macOS and Linux
 python -m pip install -r requirements.txt
 python reproduce.py check           # about 5 min: checks against numbers quoted in the paper
 python reproduce.py figures         # under a minute: redraws the five figures into reproduced/figures
-python reproduce.py tables          # about 2 min: recomputes Tables IV and V and the mass functions, and compares
+python reproduce.py tables          # about 2 min: recomputes Tables V and VI and the mass functions, and compares
 python reproduce.py list            # the commands for the long simulations, with run times
 ```
 
@@ -34,9 +34,11 @@ python reproduce.py list            # the commands for the long simulations, wit
 | `paper/figs/` | Figure scripts (`fig_*.py`, shared style in `style.py`) and the small data files they read |
 | `simulation/` | Simulation code, every threshold result (`res_*.json`), run logs (`log*.txt`), thermodynamic tables |
 | `simulation/massfn/` | Mass functions (Sec. V A, Fig. 5) |
-| `simulation/seeds/` | Distortion-capped seed abundances for non-Gaussian tails (Sec. V B, Table V) |
-| `simulation/review_tests/` | Tests of the multigroup model added in response to the code audit: `bracket_mg.py` runs pairs at the archived threshold ± 0.001 for the local e± correction (`chi_local=True`), a wider energy grid (G = 8, x up to 80), smaller time steps (`dthalf`: H dt and CFL numbers halved; `dtall`: also κ dt ≤ 0.25 via `ckap`) and a boosted, momentum-conserving neutrino–neutrino term (`nnmode=1`), one at a time and combined (wide grid with the boosted term, with and without the local correction: `x80boost`, `x80boostchi`); `bisect_eosc_N400.py` checks the resolution of the single-rate scan; `vrel_mg.py` records the relative motion of neutrinos and plasma (Sec. II B). Results in `res_test_*.json`, `res_eosc_N400_*.json` and `res_vrel_*.json`, logs in `log_*.txt`; `summarize.py` writes the table `summary.txt`. The new options default to the archived behaviour (a regression run to ε = 0.6 gives bit-for-bit identical intensities). |
-| `simulation/review_checks/` | Checks added in response to review: central ζ at threshold (zeta_center.py), linear theory on the two slicings (linear_slicing.py), mass-weighted and peak-theory abundance ratios (massweight.py) |
+| `simulation/seeds/` | Distortion-capped seed abundances for non-Gaussian tails (Sec. V B, Table VI) |
+| `simulation/earlier_start/` | Thresholds from runs started earlier, at ε₀ = 0.05 and 0.025 (Sec. IV E, Table IV, and the ε₀ = 0.025 row of Table II). `calibrate_T0.py` finds the start temperatures that keep T_H (`T0_calibration.json`), `bisect_early.py` runs the bisections (`res_*.json`, logs in `logs/`) and `summarize.py` writes the table `summary.txt` |
+| `simulation/energy_grid/` | Energy grid of the multigroup calculation (App. C). `scan.py` runs each grid (E/T up to 20, 80, 320 and 1280) at 8 amplitudes about the archived threshold, and the top-group diagnostic on the widest grid (`points/*.json`). `merge.py` writes the thresholds (`res_*.json`) and `summary.txt`. The GitHub workflow `energy grid` (`.github/workflows/energy-grid.yml`) runs the 66 simulations in about 25 minutes |
+| `simulation/validation/` | Tests of the multigroup model (App. C, Table VIII) and of the resolution: `bracket_mg.py` runs pairs at the archived threshold ± 0.001 for the local e± correction (`chi_local=True`), a wider energy grid (G = 8, x up to 80), smaller time steps (`dthalf`: H dt and CFL numbers halved; `dtall`: also κ dt ≤ 0.25 via `ckap`) and a boosted, momentum-conserving neutrino–neutrino term (`nnmode=1`), one at a time and combined (wide grid with the boosted term, with and without the local correction: `x80boost`, `x80boostchi`); `bisect_eosc_N400.py` checks the resolution of the single-rate scan; `vrel_mg.py` records the relative motion of neutrinos and plasma (Sec. II B). Results in `res_test_*.json`, `res_eosc_N400_*.json` and `res_vrel_*.json`, logs in `log_*.txt`; `summarize.py` writes the table `summary.txt`. The new options default to the archived behaviour (a regression run to ε = 0.6 gives bit-for-bit identical intensities). |
+| `simulation/checks/` | Quadrature checks: central ζ at threshold (zeta_center.py), linear theory on the two slicings (linear_slicing.py), mass-weighted and peak-theory abundance ratios (massweight.py) |
 
 ## Main modules
 
@@ -66,12 +68,15 @@ Run the simulation scripts from inside `simulation/`.
 - **Fig. 4 (physical curve, Appendix C).** `cd multigroup && python3 weak_rates.py`; then from `simulation/`: `python3 bisect_mg.py phys6 <T0> <lo> <hi> 4e-4 mode=phys G=6 x_lo=0.4 x_hi=20` for T0 = 40, 20, 10, 5, 3 (the brackets used are in `q_mg1.sh`–`q_mg4.sh`) and `python3 trisect_mg.py phys6 7 0.5220 0.5250 3.5e-4 mode=phys G=6 x_lo=0.4 x_hi=20` (two trial amplitudes per round, in parallel), the single-rate scans `python3 bisect_eosc.py 1.0 <T0 list> ...` and `bisect_eosc.py 0.75 ...` (`q_gray1a.sh`–`q_gray1c.sh`, `q_gray075.sh`), and `python3 make_phys_curve.py`. Checks: `python3 mg_validate.py` (multigroup with the gray rate against the gray code), `bisect_mg.py G10 ...` (ten groups), `bisect_mg.py nonunu6 ... nunu=0` (no scattering among neutrinos).
 - **Table III (black-hole masses).** `python3 bh_mass.py 0.0 0.49767 0.1,0.03,0.01,0.003,0.001,0.0003,0.0001`, and the same with `0.409 0.52832`.
 - **Fig. 5.** `cd massfn && python3 mass_function.py` for panel (a); panel (b) is computed in `paper/figs/fig_massfn.py` from the mass scan.
-- **Tables IV and V.** `cd seeds && python3 seed_window.py && python3 seed_bounds.py && python3 seed_edges.py` (the last gives the window-edge factors quoted in Sec. V B). Table IV also uses `paper/figs/numbers_stats.py`.
+- **Table IV and the ε₀ = 0.025 row of Table II (earlier start).** `python3 earlier_start/calibrate_T0.py`, then `python3 earlier_start/bisect_early.py [workers]` and `python3 earlier_start/summarize.py`.
+- **Tables V and VI.** `cd seeds && python3 seed_window.py && python3 seed_bounds.py && python3 seed_edges.py` (the last gives the window-edge factors quoted in Sec. V B). Table V also uses `paper/figs/numbers_stats.py`.
+- **Table VIII (tests of the multigroup model).** `python3 validation/bracket_mg.py`, then `python3 validation/summarize.py`.
+- **Energy grid (App. C).** From the Actions tab of the repository (or of a fork), run the workflow `energy grid` and download the artifact `energy-grid-results`. Locally: `python3 energy_grid/scan.py run all` (66 multigroup runs on all cores), then `python3 energy_grid/merge.py`.
 - **Figures.** From `paper/figs/`, run `python3 fig_<name>.py` (dynamics, linear, scaling, mass, massfn).
 
 ## Quick checks
 
-`python reproduce.py check`, or `cd simulation && python run_tests.py` (about five minutes on one core; our output is in `review_tests/log_run_tests.txt`), repeats the homogeneous-universe test, the linear-theory factors of Appendix B, and two-run brackets of the perfect-fluid, free-streaming and strong-coupling thresholds, and prints them next to the values in the paper. For each run it also reports the minimum neutrino intensity, the minimum radial spacing, the residual of the constraint Γ² = 1 + U² − 2M/R and whether the fallback rule decided the outcome.
+`python reproduce.py check`, or `cd simulation && python run_tests.py` (about five minutes on one core; our output is in `validation/log_run_tests.txt`), repeats the homogeneous-universe test, the linear-theory factors of Appendix B, and two-run brackets of the perfect-fluid, free-streaming and strong-coupling thresholds, and prints them next to the values in the paper. For each run it also reports the minimum neutrino intensity, the minimum radial spacing, the residual of the constraint Γ² = 1 + U² − 2M/R and whether the fallback rule decided the outcome.
 
 ## Runtime
 
@@ -82,6 +87,8 @@ Measured on one core of a 2-core Linux machine. In a fresh environment, `python 
 | Pure-radiation bisection (N = 400, N_μ = 32) | 0.1–3.5 min |
 | Full-model single-rate bisection (N = 300) | 3–4 min |
 | One multigroup run (G = 6, the paper's settings) | about 10 min; a multigroup bisection about an hour, or 50 min with `trisect_mg.py` on two cores |
+| Energy-grid scan (`energy_grid/`, 66 multigroup runs with up to 12 groups) | about 25 min with the GitHub workflow (17 runners with 4 cores) |
+| Earlier-start bisections (`earlier_start/`) | 1–3 min each for the perfect fluid, 20–30 min with neutrinos |
 | `lin_offcentre.py` | 4 min |
 | Seed scripts (`seeds/`) | a few seconds here; about 10 min was reported on another machine |
 | `massfn/mass_function.py` | 1 s |
@@ -92,18 +99,20 @@ Measured on one core of a 2-core Linux machine. In a fresh environment, `python 
 |---|---|
 | Table I | `res_nu409_K16.json` (N_μ = 16), `res_nu409_fine.json` (N_μ = 32; same case as `res_nu32.json` and `res_nu409_flag.json` at coarser tolerance), `res_nu409_N800.json`, `res_nu409_r15.json`, `res_nu409_K64b.json` |
 | Table II, R_ν rows | `res_fluid.json`; `res_nu10_K32.json`, `res_nu20_K32.json`, `res_nu30_K32.json`, `res_nu32.json`, `res_nu488_K32.json` |
-| Table II, ε₀ rows | `res_fl_e005.json`, `res_fl_e02.json`, `res_fl_e025.json`; `res_nu409_e005.json`, `res_nu409_e02b.json`, `res_nu488_e025.json` |
+| Table II, ε₀ rows | `res_fl_e005.json`, `res_fl_e02.json`, `res_fl_e025.json`; `res_nu409_e005.json`, `res_nu409_e02b.json`, `res_nu488_e025.json`; ε₀ = 0.025: `earlier_start/res_rad_pf_e0.025.json`, `earlier_start/res_rad_nu_e0.025.json` |
 | Table II, gradual decoupling | `res_dec_<eps_dec>.json` |
 | Table II, profile shapes | `res_fl_q03.json`, `res_fl_q05.json`, `res_fl_q2.json`, `res_fl_q4.json`; `res_nu409_q03.json`, `res_nu409_q05.json`, `res_nu409_q2.json`, `res_nu409_q4.json` |
 | Sec. III B, outer edge for α = 0.3 | `res_fl_q03_r15.json`, `res_nu409_q03_r15.json` |
 | Sec. III B, strong coupling | `res_nuc_100.0.json` (`res_nuc_0.0.json`: collisionless check) |
 | Sec. III B, fallback rule flagged | `res_pf_flag.json`, `res_nu409_flag.json`; full model `res_eoscflag_2.0_1.0.json`, `res_eoscflag_2.0_10.0.json` |
 | Table III | thresholds `res_pf_fine.json`, `res_nu409_fine.json`; masses `res_bhmass_fnu0.0_N400_K32.json`, `res_bhmass_fnu0.409_N400_K32.json`; growth `res_accrete_*.json` |
-| Fig. 4 | perfect fluid `res_eos_pf_<T0>.json`; single-rate model `res_eosc_<T_dec>_<T0>.json`; multigroup `res_mg_phys6_<T0>.json`; physical curve `res_phys_<T0>.json`; checks `res_mg_G10_*.json`, `res_mg_nonunu6_*.json`, `res_eosc2_*.json` |
-| Sec. III B, resolution of the single-rate scan | `review_tests/res_eosc_N400_1.0_10.0.json` (N = 400) against `res_eosc_1.0_10.0.json` (N = 300) |
-| Sec. II B, neutrino flux relative to the plasma | `review_tests/res_vrel_20.0.json`, `review_tests/res_vrel_10.0.json` |
-| App. C, Tests (bracket tests) | `review_tests/res_test_<variant>_<T0>_<delta>.json`, `review_tests/log_bracket*.txt` |
-| Tables IV, V and Sec. V B | `seeds/*_out.txt`, `seeds/seed_bounds.json`, `paper/figs/numbers_stats.py` |
+| Fig. 4, Table VII | perfect fluid `res_eos_pf_<T0>.json`; single-rate model `res_eosc_<T_dec>_<T0>.json`; multigroup `res_mg_phys6_<T0>.json`; physical curve `res_phys_<T0>.json`; checks `res_mg_G10_*.json`, `res_mg_nonunu6_*.json`, `res_eosc2_*.json` |
+| Table IV (earlier start) | ε₀ = 0.05 and 0.025: `earlier_start/res_eos_<pf or nu>_T<T0>_e<eps0>.json` (T0 = 0.5 and 1 name the start temperature of the archived run), start temperatures in `earlier_start/T0_calibration.json`, table in `earlier_start/summary.txt`. ε₀ = 0.1: `res_eos_pf_0.5.json`, `res_eos_pf_1.0.json`, `res_eosc_1.0_0.5.json`, `res_eosc_1.0_1.0.json` |
+| Sec. III B, resolution of the single-rate scan | `validation/res_eosc_N400_1.0_10.0.json` (N = 400) against `res_eosc_1.0_10.0.json` (N = 300) |
+| Sec. II B, neutrino flux relative to the plasma | `validation/res_vrel_20.0.json`, `validation/res_vrel_10.0.json` |
+| Table VIII (bracket tests) | `validation/res_test_<variant>_<T0>_<delta>.json`, `validation/log_bracket*.txt`, table in `validation/summary.txt` |
+| App. C, energy grid | thresholds `energy_grid/res_egrid_G<G>_x<x_hi>_T<T0>.json`, top-group share `energy_grid/points/top_*.json`, table in `energy_grid/summary.txt` |
+| Tables V, VI and Sec. V B | `seeds/*_out.txt`, `seeds/seed_bounds.json`, `paper/figs/numbers_stats.py` |
 
 ## Notes
 

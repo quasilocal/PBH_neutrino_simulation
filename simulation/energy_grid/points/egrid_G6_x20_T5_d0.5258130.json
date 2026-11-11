@@ -1,0 +1,13 @@
+{
+ "label": "egrid_G6_x20_T5",
+ "G": 6,
+ "x_hi": 20.0,
+ "T0": 5.0,
+ "delta": 0.525813,
+ "status": "BH",
+ "fallback": false,
+ "eps": 5.456,
+ "steps": 41637,
+ "TH": 0.5062136140724126,
+ "seconds": 718
+}

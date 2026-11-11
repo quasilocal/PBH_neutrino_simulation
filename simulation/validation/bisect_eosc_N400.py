@@ -1,5 +1,5 @@
-"""Resolution check of the full model (reviewer 2, C5): single-rate model, T_dec = 1 MeV, T0 = 10 MeV (T_H = 1 MeV),
-N = 400 instead of the default 300. Writes review_tests/res_eosc_N400_1.0_10.0.json (archived N = 300 file untouched)."""
+"""Resolution check of the full model (Sec. III B): single-rate model, T_dec = 1 MeV, T0 = 10 MeV (T_H = 1 MeV),
+N = 400 instead of the default 300. Writes validation/res_eosc_N400_1.0_10.0.json (archived N = 300 file untouched)."""
 import sys, os, json, time
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, '..'))
 from run_eosc import run

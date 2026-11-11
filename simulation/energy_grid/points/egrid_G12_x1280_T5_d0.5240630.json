@@ -1,0 +1,13 @@
+{
+ "label": "egrid_G12_x1280_T5",
+ "G": 12,
+ "x_hi": 1280.0,
+ "T0": 5.0,
+ "delta": 0.524063,
+ "status": "dispersed",
+ "fallback": false,
+ "eps": 5.628,
+ "steps": 43064,
+ "TH": 0.5062110953746694,
+ "seconds": 1137
+}

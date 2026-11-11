@@ -1,0 +1,26 @@
+Energy grid: multigroup thresholds with the common rest-frame nu-nu target (nnmode = 1), from 8 runs per grid
+spaced 0.00025 apart about the archived threshold. Outcomes: D = dispersed, B = black hole, then eps at the end.
+
+T_H = 1.00 MeV: perfect fluid 0.49742, archived (first-order target, 6 groups to 20) 0.51941, shift 4.42% in delta_c and 6.83% in C_l,c
+   G= 6, E/T_nu,b <= 20     0.51941+-0.00012   shift 4.42% / 6.82%   minus archived -0.00000
+      0.51853 D5.68  0.51878 D5.81  0.51903 D6.00  0.51928 D6.37  0.51953 B6.21  0.51978 B5.82  0.52003 B5.60  0.52028 B5.45
+   G= 8, E/T_nu,b <= 80     0.51941+-0.00012   shift 4.42% / 6.82%   minus archived -0.00000
+      0.51853 D5.71  0.51878 D5.86  0.51903 D6.08  0.51928 D6.79  0.51953 B6.00  0.51978 B5.71  0.52003 B5.53  0.52028 B5.39
+   G=10, E/T_nu,b <= 320    0.51941+-0.00012   shift 4.42% / 6.82%   minus archived -0.00000
+      0.51853 D5.72  0.51878 D5.86  0.51903 D6.09  0.51928 D6.88  0.51953 B5.99  0.51978 B5.71  0.52003 B5.52  0.52028 B5.39
+   G=12, E/T_nu,b <= 1280   0.51941+-0.00012   shift 4.42% / 6.82%   minus archived -0.00000
+      0.51853 D5.72  0.51878 D5.86  0.51903 D6.09  0.51928 D6.92  0.51953 B5.99  0.51978 B5.70  0.52003 B5.52  0.52028 B5.39
+
+T_H = 0.51 MeV: perfect fluid 0.49602, archived (first-order target, 6 groups to 20) 0.52494, shift 5.83% in delta_c and 9.08% in C_l,c
+   G= 6, E/T_nu,b <= 20     0.52494+-0.00012   shift 5.83% / 9.08%   minus archived +0.00000
+      0.52406 D5.62  0.52431 D5.73  0.52456 D5.88  0.52481 D6.13  0.52506 B6.77  0.52531 B5.91  0.52556 B5.63  0.52581 B5.46
+   G= 8, E/T_nu,b <= 80     0.52494+-0.00012   shift 5.83% / 9.08%   minus archived +0.00000
+      0.52406 D5.63  0.52431 D5.74  0.52456 D5.89  0.52481 D6.15  0.52506 B6.60  0.52531 B5.88  0.52556 B5.62  0.52581 B5.45
+   G=10, E/T_nu,b <= 320    0.52494+-0.00012   shift 5.83% / 9.08%   minus archived +0.00000
+      0.52406 D5.63  0.52431 D5.74  0.52456 D5.89  0.52481 D6.16  0.52506 B6.58  0.52531 B5.88  0.52556 B5.62  0.52581 B5.44
+   G=12, E/T_nu,b <= 1280   0.52494+-0.00012   shift 5.83% / 9.08%   minus archived +0.00000
+      0.52406 D5.63  0.52431 D5.74  0.52456 D5.90  0.52481 D6.16  0.52506 B6.57  0.52531 B5.88  0.52556 B5.62  0.52581 B5.44
+
+Top group (640 <= E/T_nu,b <= 1280) on the widest grid, T_H = 1 MeV: largest share of the energy of a flavour
+   delta = 0.518406: dispersed at eps = 5.66, top-group share at most 1.5e-274, reached at r = 0.00, eps = 0.124, T_b = 8.07 MeV
+   delta = 0.520406: BH at eps = 5.33, top-group share at most 1.6e-274, reached at r = 0.00, eps = 0.124, T_b = 8.07 MeV

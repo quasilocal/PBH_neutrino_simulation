@@ -1,0 +1,13 @@
+{
+ "label": "egrid_G8_x80_T10",
+ "G": 8,
+ "x_hi": 80.0,
+ "T0": 10.0,
+ "delta": 0.520281,
+ "status": "BH",
+ "fallback": false,
+ "eps": 5.391,
+ "steps": 37603,
+ "TH": 1.0029102309459483,
+ "seconds": 915
+}

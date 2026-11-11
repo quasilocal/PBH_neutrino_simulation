@@ -1,0 +1,7 @@
+eos_nu_T1_e0.05 delta=0.515430: BH eps=5.97 (377s)
+eos_nu_T1_e0.05 delta=0.512430: dispersed eps=5.29 (285s)
+eos_nu_T1_e0.05 delta=0.513930: dispersed eps=5.71 (34736s)
+eos_nu_T1_e0.05 delta=0.514680: dispersed eps=6.22 (7483s)
+eos_nu_T1_e0.05 delta=0.515055: BH eps=6.72 (2589s)
+eos_nu_T1_e0.05 delta=0.514868: dispersed eps=6.53 (237s)
+RESULT eos_nu_T1_e0.05: delta_c = 0.51496 +- 0.00009 (761.8 min)

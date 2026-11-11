@@ -1,0 +1,13 @@
+{
+ "label": "egrid_G10_x320_T10",
+ "G": 10,
+ "x_hi": 320.0,
+ "T0": 10.0,
+ "delta": 0.519531,
+ "status": "BH",
+ "fallback": false,
+ "eps": 5.992,
+ "steps": 42392,
+ "TH": 1.0029110395451102,
+ "seconds": 1003
+}
